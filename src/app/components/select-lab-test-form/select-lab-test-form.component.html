@@ -1,0 +1,14 @@
+<nz-form-item>
+  <nz-select
+    [(ngModel)]="testSelected"
+    nzShowSearch
+    nzPlaceHolder="e.g. Anti G8M Antibody"
+    (ngModelChange)="showSelecedValue($event)"
+  >
+    <nz-option
+      *ngFor="let test of labTests"
+      [nzLabel]="test.title"
+      [nzValue]="test"
+    ></nz-option>
+  </nz-select>
+</nz-form-item>
