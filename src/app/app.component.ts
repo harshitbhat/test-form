@@ -9,13 +9,11 @@ import { ILabTest } from 'src/app/interfaces/lab-test.interface';
 })
 export class AppComponent {
   testsSelected: ILabTest[] = [];
-  showFormAfter: boolean = false;
 
   constructor() {}
 
   addTest(obj: ILabTest) {
     this.testsSelected.push(obj);
-    this.showFormAfter = false;
   }
 
   deleteTest(obj: ILabTest) {
@@ -24,7 +22,5 @@ export class AppComponent {
     );
   }
 
-  addForm() {
-    this.showFormAfter = true;
-  }
+  addForm() {}
 }
