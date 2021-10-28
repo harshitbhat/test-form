@@ -1,0 +1,13 @@
+<nz-list nzItemLayout="horizontal">
+  <nz-list-item *ngFor="let test of assignedLabTestList">
+    <nz-list-item-meta>
+      <nz-list-item-meta-avatar
+        ><i nz-icon nzType="check-circle" nzTheme="twotone"></i
+      ></nz-list-item-meta-avatar>
+      <nz-list-item-meta-title>{{ test.title }}</nz-list-item-meta-title>
+      <nz-list-item-meta-description>{{
+        test.body
+      }}</nz-list-item-meta-description>
+    </nz-list-item-meta>
+  </nz-list-item>
+</nz-list>

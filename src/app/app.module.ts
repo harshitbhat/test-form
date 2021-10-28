@@ -18,6 +18,7 @@ import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { SelectLabTestFormComponent } from './components/select-lab-test-form/select-lab-test-form.component';
 import { SelectedLabTestListComponent } from './components/selected-lab-test-list/selected-lab-test-list.component';
+import { AssignedLabTestComponent } from './components/assigned-lab-test/assigned-lab-test.component';
 
 registerLocaleData(en);
 
@@ -30,7 +31,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
 );
 
 @NgModule({
-  declarations: [AppComponent, SelectLabTestFormComponent, SelectedLabTestListComponent],
+  declarations: [AppComponent, SelectLabTestFormComponent, SelectedLabTestListComponent, AssignedLabTestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

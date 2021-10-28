@@ -1,15 +1,24 @@
-<nz-form-item>
-  <nz-select
-    [(ngModel)]="testSelected"
-    nzShowSearch
-    nzPlaceHolder="e.g. Anti G8M Antibody"
-    (ngModelChange)="showSelecedValue($event)"
-    nzValue="testSelected"
-  >
-    <nz-option
-      *ngFor="let test of labTests"
-      [nzLabel]="test.title"
-      [nzValue]="test"
-    ></nz-option>
-  </nz-select>
-</nz-form-item>
+<div class="d-flex">
+  <nz-form-item>
+    <nz-select
+      [(ngModel)]="testSelected"
+      nzShowSearch
+      nzPlaceHolder="e.g. Anti G8M Antibody"
+      (ngModelChange)="showSelecedValue($event)"
+    >
+      <nz-option
+        *ngFor="let test of labTests"
+        [nzLabel]="test.title"
+        [nzValue]="test"
+      ></nz-option>
+    </nz-select>
+  </nz-form-item>
+  <i
+    *ngIf="showDelIcon"
+    nz-icon
+    nzType="delete"
+    nzTheme="twotone"
+    class="delete-form-icon"
+    (click)="onClickDelete(testSelectedComponent)"
+  ></i>
+</div>
