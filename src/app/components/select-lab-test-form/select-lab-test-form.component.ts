@@ -18,11 +18,11 @@ import { ILabTestComponent } from 'src/app/interfaces/lab-test-component.interfa
 })
 export class SelectLabTestFormComponent implements OnChanges {
   labTests: ILabTest[];
-  testSelected!: ILabTest | undefined;
-  testSelectedComponent!: ILabTestComponent;
+  testSelected: ILabTest | undefined;
+  testSelectedComponent!: ILabTestComponent | undefined;
 
   @Input() showDelIcon!: boolean;
-  @Input() componentDetails: ILabTestComponent | undefined;
+  @Input() componentDetails!: ILabTestComponent | undefined;
 
   @Output() componentCreated = new EventEmitter<ILabTestComponent>();
   @Output() selected = new EventEmitter<ILabTestComponent>();
@@ -45,27 +45,23 @@ export class SelectLabTestFormComponent implements OnChanges {
 
   // The game is being played here
   ngOnChanges() {
+    console.log('Comming ', this.componentDetails);
+    console.log('Current ', this.testSelectedComponent);
     if (this.componentDetails) {
-      if (this.componentDetails.componentId) {
-        this.testSelectedComponent.componentId =
-          this.componentDetails.componentId;
-      }
-      if (this.componentDetails.labTest) {
-        this.testSelectedComponent.labTest = this.componentDetails.labTest;
-      }
-
-      this.testSelected =
-        this.testSelectedComponent.labTest || this.componentDetails.labTest;
+      this.testSelectedComponent = { ...this.componentDetails };
     }
+    this.testSelected = this.testSelectedComponent?.labTest;
   }
 
   showSelecedValue(obj: ILabTest) {
     this.testSelected = obj;
-    this.testSelectedComponent.labTest = this.testSelected;
+    if (this.testSelectedComponent) {
+      this.testSelectedComponent.labTest = this.testSelected;
+    }
     this.selected.emit(this.testSelectedComponent);
   }
 
-  onClickDelete(test: ILabTestComponent) {
+  onClickDelete(test: ILabTestComponent | undefined) {
     this.deleteSelected.emit(test);
   }
 }

@@ -11,14 +11,19 @@ import { ILabTestComponent } from 'src/app/interfaces/lab-test-component.interfa
 export class AppComponent {
   testsSelected: Map<string, ILabTest | undefined> = new Map();
   testAssigned: ILabTest[] = [];
-  additionalTests: ILabTestComponent[] = [];
+  additionalTests: any[] = [];
   formsOpenCount: number = 0;
 
   constructor() {}
 
   addTest(obj: ILabTestComponent) {
     this.testsSelected.set(obj.componentId, obj.labTest);
-    //console.log(obj, this.additionalTests);
+    for (const test of this.additionalTests) {
+      if (test && obj.componentId === test.componentId) {
+        test.labTest = obj.labTest;
+      }
+    }
+    console.log(obj, this.additionalTests);
   }
 
   deleteTest(test: ILabTestComponent) {
